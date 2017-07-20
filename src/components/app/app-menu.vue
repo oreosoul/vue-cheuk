@@ -4,7 +4,7 @@
       <img src="../../assets/logo.png" /><span>Vue Admin</span>
     </div>
     <ul class="menu-list">
-      <li class="list-item" v-for="item in listData" :key="item.title">{{item.title}}</li>
+      <c-menu-item v-for="item in listData" :key="item.index" :model="item"></c-menu-item>
     </ul>
   </div>
 </template>
@@ -14,12 +14,17 @@ export default {
   data() {
     return {
       listData: [
-        {title:'Hello'},
+        {title:'Hello0'},
         {
           title:'Test1',
-          listData:[
+          children:[
             {
-              title:'Components'
+              title:'Components',
+              children:[
+                {title:'menu0'},
+                {title:'menu1'},
+                {title:'menu2'},
+              ]
             }
           ]
         },
@@ -27,6 +32,9 @@ export default {
         {title:'Test3'}
       ],
     };
+  },
+  components:{
+    "c-menu-item": require('../common/c-menu-item'),
   }
 }
 </script>
@@ -66,28 +74,12 @@ export default {
   left: 0px;
   right: -17px;
   overflow-y: scroll;
-  .list-item{
-    text-align: left;
-    padding: 10px 0;
-    padding-left: 20px;
-    height: 40px;
-    cursor: pointer;
-  }
 }
 
 //换肤
-&[data-theme = 'default']{
+[data-theme = 'default']{
   .menu{
     border-right-color: @default-subordinate;
-  }
-  .menu-list{
-    .list-item{
-      &:hover{
-        color:@default-primary;
-        font-weight: bold;
-        text-shadow: 2px 2px 1px #ccc;
-      }
-    }
   }
 }
 </style>
