@@ -1,6 +1,6 @@
 <template>
 <li class="item">
-  <span class="item-title" :class="{'active':isShowChildren}" @click="toggle">{{model.title}}</span>
+  <span class="item-title" :class="{'active':isShowChildren}" @click="clickItem(model)">{{model.title}}</span>
   <ul v-show="isShowChildren" v-if="model.children">
     <c-menu-item v-for="item in model.children" :key="item.index" :model="item"></c-menu-item>
   </ul>
@@ -18,8 +18,15 @@ export default {
     model:{}
   },
   methods:{
+    clickItem(item){
+      if(this.isFloder){
+        this.toggle()
+      }else{
+      }
+        if(item.path)this.$router.push(item.path)
+    },
     toggle(){
-     if(this.isFloder)this.isShowChildren = this.isShowChildren?false:true
+     this.isShowChildren = this.isShowChildren?false:true
     }
   },
   computed:{

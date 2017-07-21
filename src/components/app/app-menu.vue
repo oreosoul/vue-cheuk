@@ -14,10 +14,12 @@ export default {
   data() {
     return {
       listData: [
-        {title:'Hello0'},
+        {title:'Hello0', path: '/hello'},
         {
-          title:'Test1',
+          title:'Components',
+          path: '/components',
           children:[
+            {title: 'Drag', path: '/components/drag'},
             {
               title:'Components',
               children:[
@@ -28,8 +30,8 @@ export default {
             }
           ]
         },
-        {title:'Test2'},
-        {title:'Test3'}
+        {title:'Test2', path: '/Test2'},
+        {title:'Test3', path: '/Test3'}
       ],
     };
   },

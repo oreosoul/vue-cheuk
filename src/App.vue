@@ -1,9 +1,9 @@
 <template>
   <div id="app" :data-theme="theme">
     <app-menu></app-menu>
-    <div class="app-contact">
+    <div class="app-right">
       <div class="app-header"></div>
-      <router-view></router-view>
+      <router-view class="app-container"></router-view>
     </div>
   </div>
 </template>
@@ -48,7 +48,6 @@ export default {
 }
 #app {
   display: flex;
-  text-align: center;
   position: relative;
   height: 100%;
   width: 100%;
@@ -59,11 +58,14 @@ export default {
     border-color: @default-subordinate;
   }
 }
-.app-contact{
+.app-right{
   flex-grow:1;
   margin-left: @app-menu-width;
 }
 .app-header{
   height: @app-header-height;
+}
+.app-container{
+  padding: 10px 20px;
 }
 </style>
