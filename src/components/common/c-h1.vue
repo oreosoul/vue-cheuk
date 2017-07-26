@@ -13,5 +13,6 @@ export default {
 <style lang="less" scoped>
 h1{
     margin-bottom: 20px;
+    text-transform: capitalize; 
 }
 </style>

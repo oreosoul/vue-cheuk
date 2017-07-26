@@ -17,9 +17,9 @@ export default {
         {title:'Hello0', path: '/hello'},
         {
           title:'Components',
-          path: '/components',
           children:[
-            {title: 'Drag', path: '/components/drag'},
+            {title: 'DomDrag', path: '/components/drag'},
+            {title: 'VueDrag', path: '/components/vuedrag'},
             {
               title:'Components',
               children:[
@@ -30,8 +30,8 @@ export default {
             }
           ]
         },
-        {title:'Test2', path: '/Test2'},
-        {title:'Test3', path: '/Test3'}
+        {title:'Test2'},
+        {title:'Test3'}
       ],
     };
   },

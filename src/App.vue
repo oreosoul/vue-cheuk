@@ -46,6 +46,8 @@ export default {
   box-sizing: border-box;
   transition: all .3s ease-out;
 }
+h1{margin-bottom: 20px;}
+h2,h3,h4,h5{margin-bottom: 10px;}
 #app {
   display: flex;
   position: relative;

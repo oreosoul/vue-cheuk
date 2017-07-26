@@ -1,6 +1,6 @@
 <template>
 <div>
-  <c-h1>Components</c-h1>
+  <c-h1>{{title}}</c-h1>
   <router-view></router-view>
 </div>
 </template>
@@ -10,6 +10,11 @@ export default {
   data () {
     return {
     };
+  },
+  computed: {
+    title (){
+      return this.$route.path.split('/')[1]
+    },
   },
   components: {
     "c-h1":require('../../common/c-h1')

@@ -1,6 +1,6 @@
 <template>
 <div>
-  <h2>Drag</h2>
+  <h2>{{$route.name}}</h2>
   <div class="drag-container">
     <div class="drag-box">
       <ul id="documentList" @drop="drop($event)" @dragover="allowDrop($event)">
@@ -31,16 +31,16 @@ export default {
       this.dragDom = ev.target
     },
     drop (ev){
-      if(ev.target.id==='documentList'||ev.target.id==='recycleList'){
+      if(ev.target.tagName==='UL'){
         ev.target.appendChild(this.dragDom)
       }
-      if(ev.target.parentNode.id==='documentList'||ev.target.parentNode.id==='recycleList'){
+      if(ev.target.parentNode.tagName==='UL'){
         ev.target.parentNode.appendChild(this.dragDom)
       }
     },
     allowDrop (ev){
       ev.preventDefault()
-    }
+    },
   },
 }
 </script>
@@ -63,11 +63,12 @@ h2{
   overflow-y: auto;
   ul{
     width: 100%;
-    height: 100%;
+    height: calc(~"100% - 35px");
     li{
       border:1px solid #ddd;
       padding: 10px 30px;
       margin-bottom: 10px;
+      cursor: pointer;
     }
   }
 }
