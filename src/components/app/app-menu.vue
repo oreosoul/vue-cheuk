@@ -1,7 +1,7 @@
 <template>
   <div class="menu">
     <div class="menu-title">
-      <img src="../../assets/logo.png" /><span>Vue Admin</span>
+      <img src="../../assets/logo.png" /><span>Vue Demo</span>
     </div>
     <ul class="menu-list">
       <c-menu-item v-for="item in listData" :key="item.index" :model="item"></c-menu-item>
@@ -20,17 +20,15 @@ export default {
           children:[
             {title: 'DomDrag', path: '/components/drag'},
             {title: 'VueDrag', path: '/components/vuedrag'},
-            {
-              title:'Components',
-              children:[
-                {title:'menu0'},
-                {title:'menu1'},
-                {title:'menu2'},
-              ]
-            }
           ]
         },
-        {title:'Test2'},
+        {
+          title:'Excel',
+          children:[
+            {title: '导出Excel', path: '/excel/export'},
+            {title: '导出选择Excel', path: '/excel/exportSelected'},
+          ]
+        },
         {title:'Test3'}
       ],
     };
