@@ -5,14 +5,15 @@
     <div class="drag-box">
       <h3>首发阵容</h3>
       <draggable v-model="myArray" :options="dragOptions" 
-        :move="move" 
-        @start="start"
-        @update="update"
-        @end="end"
+        :move="move"
       >
         <transition-group tag="ul">
-          <li v-for="element in myArray" :key="element.id" class="item">
-              {{element.name}}
+          <li v-for="(element, index) in myArray" :key="element.id" class="item">
+              <span>{{element.name}}</span>
+              <span>
+                <i @click="editItem(element)" class="icon el-icon-edit"></i>
+                <i @click="deleteItem(myArray, index)" class="icon el-icon-delete"></i>
+              </span>
           </li>
         </transition-group>
       </draggable>
@@ -20,14 +21,15 @@
     <div class="drag-box">
       <h3>候补名单</h3>
       <draggable v-model="substitution" :options="dragOptions"
-        :move="move" 
-        @start="start"
-        @update="update"
-        @end="end"
+        :move="move"
       >
         <transition-group tag="ul">
-          <li v-for="element in substitution" :key="element.id" class="item">
-              {{element.name}}
+          <li v-for="(element, index) in substitution" :key="element.id" class="item">
+              <span>{{element.name}}</span>
+              <span>
+                <i @click="editItem(element)" class="icon el-icon-edit"></i>
+                <i @click="deleteItem(substitution, index)" class="icon el-icon-delete"></i>
+              </span>
           </li>
         </transition-group>
       </draggable>
@@ -53,7 +55,7 @@ export default {
       ],
       substitution:[
         {id:5,name:'Cam'},
-        {id:5,name:'Kent'},
+        {id:6,name:'Kent'},
       ],
     };
   },
@@ -65,21 +67,15 @@ export default {
       console.log('move:',obj)
       console.log('move')
     },
-    update (obj){
-      console.log('update:',obj)
-      // this.dragData = ev.target
-      console.log('update')      
+    editItem (el){
+      let name  = prompt('请输入姓名：')
+      el.name = name
+      console.log(el)
     },
-    start (obj){
-      console.log('start:',obj)
-      // this.dragData = ev.target
-      console.log('start')    
-    },
-    end (obj){
-      console.log('end:',obj)
-      // this.dragData = ev.target
-      console.log('end')         
-    },
+    deleteItem (arr, index){
+      console.log(arr,index)
+      arr.splice(index, 1)
+    }
   },
   computed:{
     dragOptions () {
@@ -104,6 +100,9 @@ h2{
 h3{
   margin-bottom: 10px;
 }
+.icon{
+  margin-left: 10px;
+}
 .drag-container{
   display: flex;
   justify-content: space-between;
@@ -123,10 +122,18 @@ h3{
     overflow: hidden;
     overflow-y: auto;
     li{
+      display: flex;
+      justify-content: space-between;
       border:1px solid #ddd;
       padding: 10px 30px;
       margin-bottom: 10px;
-      cursor: pointer;
+      cursor: move;
+      &:hover{
+        background-color: darken(#fff,10%);
+      }
+      span{
+        cursor: pointer;
+      }
     }
   }
 }
